@@ -8,7 +8,6 @@
                 <ul class="users">
                     @foreach($users as $user)
                         <li class="user" id="{{ $user->id }}">
-                            {{-- will show unread count notification --}}
                             @if($user->unread)
                                 <span class="pending">{{ $user->unread }}</span>
                             @endif
@@ -27,7 +26,7 @@
             </div>
         </div>
         <div class="col-md-8" id="messages">
-            
+
         </div>
     </div>
 </div>

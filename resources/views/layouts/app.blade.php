@@ -102,17 +102,20 @@
         }
         .received {
             background: #ffffff;
+            color: black;
         }
         .sent {
-            background: #3bebff;
+            background: #4A148C;
+            border-radius: 30px;
             float: right;
+            color: white;
             text-align: right;
         }
         .message p {
             margin: 5px 0;
         }
         .date {
-            color: #777777;
+            color: darkgray;
             font-size: 12px;
         }
         .active {
@@ -206,7 +209,7 @@
                 // Enable pusher logging - don't include this in production
                 Pusher.logToConsole = true;
 
-                var pusher = new Pusher('a4a3daee72b47957427b', {
+                var pusher = new Pusher('edb45ff9ee1fa36d9dff', {
                     cluster: 'mt1',
                     forceTLS: true
                 });

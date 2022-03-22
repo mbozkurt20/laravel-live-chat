@@ -28,7 +28,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        // select all users except logged in user
+        // auth user dışındaki tüm kullanıcıları getir
         //$users = User::where('id', '!=', Auth::id())->get();
 
         // count how many messages are unread from the selected user
@@ -42,11 +42,8 @@ class HomeController extends Controller
     public function getMessage ($user_id) {
         $my_id = Auth::id();
 
-        // when click to see message selected user's message will be read, update
         Message::where(['from' => $user_id, 'to' => $my_id])->update(['is_read' => 1]);
 
-        // getting all message for selected user
-        // getting those message which is from = Auth::id() and to = user_id OR from = user_id and to = Auth::id();
         $messages = Message::where(function ($query) use ($user_id, $my_id) {
             $query->where('from', $my_id)->where('to', $user_id);
         })->orWhere(function ($query) use ($user_id, $my_id) {
@@ -65,7 +62,7 @@ class HomeController extends Controller
         $data->from = $from;
         $data->to = $to;
         $data->message = $message;
-        $data->is_read = 0; // message will be unread when sending message
+        $data->is_read = 0;
         $data->save();
 
         // pusher
